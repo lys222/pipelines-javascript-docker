@@ -19,7 +19,7 @@ variables:
   imagePullSecret: 'lyscr22210663d9f-auth'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  vmImageName: 'ubuntu-20.04'
 
 
 stages:
