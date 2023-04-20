@@ -41,6 +41,16 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - task: aquasecScanner@4
+      inputs:
+        image: 'lyspipelinesjavascriptdocker'
+        scanType: 'hosted'
+        register: false
+        hideBase: false
+        showNegligible: false
+        windowsScannerVersion: '6.5.0'
+        registry: 'lyscr222.azurecr.io'
+        connection: 'aquascanner'
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
