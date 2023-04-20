@@ -43,13 +43,12 @@ stages:
           $(tag)
     - task: aquasecScanner@4
       inputs:
-        image: 'lyspipelinesjavascriptdocker'
         scanType: 'local'
         register: false
         hideBase: false
         showNegligible: false
         windowsScannerVersion: '6.5.0'
-        registry: 'lyscr222.azurecr.io'
+        registry: '$(dockerRegistryServiceConnection)'
         connection: 'aquascanner'
     - task: PublishPipelineArtifact@1
       inputs:
