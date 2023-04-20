@@ -44,7 +44,7 @@ stages:
     - task: aquasecScanner@4
       inputs:
         image: '$(imageRepository)'
-        scanType: 'local'
+        scanType: 'hosted'
         register: false
         hideBase: false
         showNegligible: false
