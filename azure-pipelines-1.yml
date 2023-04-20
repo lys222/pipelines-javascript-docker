@@ -54,7 +54,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'lys222pipelinesjavascriptdocker-1399.default'
+    environment: 'spike'
     strategy:
       runOnce:
         deploy:
