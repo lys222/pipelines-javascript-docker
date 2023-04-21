@@ -15,7 +15,7 @@ spec:
       labels:
         app: sampleapp
     spec:
-#       serviceAccountName: cicd
+      serviceAccountName: azdev-sa-7aaae0
       containers:
       - name: sampleapp
         #replace <foobar> with your container registry. Example: contosodemo.azurecr.io
