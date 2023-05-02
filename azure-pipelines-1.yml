@@ -22,7 +22,6 @@ variables:
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
-
 stages:
 - stage: Build
   displayName: Build stage
@@ -49,6 +48,8 @@ stages:
       inputs:
         docker: false
         image: '$(containerRegistry)/$(imageRepository):$(tag)'
+        ignoreUnfixed: true
+
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
