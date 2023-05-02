@@ -43,7 +43,7 @@ stages:
           $(tag)
     - task: Docker@2
       inputs:
-        containerRegistry: $(containerRegistry)
+        containerRegistry: $(dockerRegistryServiceConnection)
         command: login
     - task: trivy@1
       inputs:
