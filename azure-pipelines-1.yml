@@ -45,7 +45,7 @@ stages:
       displayName: Scan
       inputs:
         script: |
-         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --exit-code 0 --severity LOW,MEDIUM,HIGH --ignore-unfixed $(containerRegistry)/$(imageRepository):$(tag)
+         docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:0.41.0 image $(containerRegistry)/$(imageRepository):$(tag)
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
