@@ -43,7 +43,7 @@ stages:
           $(tag)
     - task: trivy@1
       inputs:
-        path: .
+        image: lyspipelinesjavascriptdocker
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
