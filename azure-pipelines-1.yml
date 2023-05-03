@@ -48,7 +48,6 @@ stages:
       inputs:
         docker: false
         image: '$(containerRegistry)/$(imageRepository):$(tag)'
-        ignoreUnfixed: true
 
     - task: PublishPipelineArtifact@1
       inputs:
