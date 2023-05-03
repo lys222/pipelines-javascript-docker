@@ -40,13 +40,15 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-
-    - task: MicrosoftSecurityDevOps@1
+    - task: CmdLine@2
+      displayName: Scan
       inputs:
-        categories: 'container'
-        tools: 'trivy'
-        break: true
-
+        script: |
+          docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:0.41.0 image $(containerRegistry)/$(imageRepository):$(tag)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: trivy-results.sarif
+        ArtifactName: CodeAnalysisLogs
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
