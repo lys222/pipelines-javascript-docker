@@ -43,9 +43,8 @@ stages:
 
     - task: MicrosoftSecurityDevOps@1
       inputs:
-        categories: 'all'
-        languages: 'all'
-        tools: 'all'
+        categories: 'container'
+        tools: 'trivy'
         break: true
 
     - task: PublishPipelineArtifact@1
