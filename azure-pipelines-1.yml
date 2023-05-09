@@ -44,12 +44,15 @@ stages:
       inputs:
         image: '$(imageRepository)'
         scanType: 'hosted'
+        containerRuntime: 'docker'
         register: false
-        registry: $(dockerRegistryServiceConnection)
         hideBase: false
         showNegligible: false
+        windowsScannerVersion: '6.5.0'
+        runOptions: '-e AQUA_TOKEN=e9f11ed4-dc7d-4ca2-897c-352204a2ab58'
+        registry: '$(dockerRegistryServiceConnection)'
         connection: 'aquascanner'
-        scanner: 'registry.aquasec.com/scanner:6.5'
+        customFlags: '--direct-cc'
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
