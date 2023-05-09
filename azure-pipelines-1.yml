@@ -40,11 +40,11 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
     - task: aquasecScanner@4
       inputs:
         image: '$(imageRepository)'
         scanType: 'hosted'
-        containerRuntime: 'docker'
         register: false
         hideBase: false
         showNegligible: false
@@ -53,6 +53,7 @@ stages:
         registry: '$(dockerRegistryServiceConnection)'
         connection: 'aquascanner'
         customFlags: '--direct-cc'
+        
     - task: PublishPipelineArtifact@1
       inputs:
         artifactName: 'manifests'
