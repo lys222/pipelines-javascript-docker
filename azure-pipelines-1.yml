@@ -39,19 +39,6 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-
-    - task: aquasecScanner@4
-      inputs:
-        image: '$(imageRepository)'
-        scanType: 'hosted'
-        register: false
-        hideBase: false
-        showNegligible: false
-        windowsScannerVersion: '6.5.0'
-        runOptions: '-e AQUA_TOKEN=e9f11ed4-dc7d-4ca2-897c-352204a2ab58'
-        registry: '$(dockerRegistryServiceConnection)'
-        connection: 'aquascanner'
-        customFlags: '--direct-cc'
         
     - task: PublishPipelineArtifact@1
       inputs:
